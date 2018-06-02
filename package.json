@@ -1,6 +1,6 @@
 {
   "name": "cophy-treetools",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Node.js utilities for performing operations on newick trees.",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,6 @@
   },
   "repository": {
     "type": "git",
-    "url":"https://github.com/meekrob/cophy-treetools"
+    "url": "https://github.com/meekrob/cophy-treetools"
   }
 }
