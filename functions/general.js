@@ -23,7 +23,6 @@
         return [running_str,running_length];
     };
     treetools.leaves = function(tree) {
-        console.dir(tree);
         var add_name_if_leaf = function(node, depth, data) {
             if (! node.branchset) {
                 if (! data.leaves) { data.leaves = []; }
