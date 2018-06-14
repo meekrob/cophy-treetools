@@ -23,17 +23,14 @@
         return [running_str,running_length];
     };
     treetools.leaves = function(tree) {
-        console.log("treetools.leaves: ");
         console.dir(tree);
         var add_name_if_leaf = function(node, depth, data) {
-            console.log("add_name_if_leaf %d", depth);
             if (! node.branchset) {
                 if (! data.leaves) { data.leaves = []; }
                 data.leaves.push(node.name);
             }
         };
         var data = {};
-        console.log("about to visitPreOrder");
         traversal.visitPreOrder(tree, add_name_if_leaf, 0, data);
         return data.leaves;
     };
