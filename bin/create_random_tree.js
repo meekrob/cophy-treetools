@@ -1,13 +1,21 @@
 #!/usr/bin/env node
 
 var treetools = require('../index');
+var seedrandom = require('seedrandom');
 
 if (process.argv.length < 3) {
-    console.log(process.argv[1] + " n_leaves");
+    console.log(process.argv[1] + " n_leaves [seed]");
     process.exit(1);
 }
 
 var n_leaves = +process.argv[2];
+
+if (process.argv.length > 3) {
+    // set the seed in Math.random
+    seedrandom( process.argv[3], { global: true });
+}
+
+
 main(n_leaves);
 
 function main(n_leaves) {
