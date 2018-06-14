@@ -23,6 +23,7 @@ function main(nw1, nw2) {
     treetools.print_ascii(nw2);
     var leaves = treetools.leaves(nw2);
     treetools.detangler( nw1, leaves )
+    console.log( treetools.toString(nw1) );
 }
 
 function error(err) {
