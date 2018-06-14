@@ -28,6 +28,7 @@ function main(n_leaves) {
     console.dir(tree);
     treetools.make_random_binary(tree);
     treetools.print_ascii(tree);
+    console.log( treetools.toString(tree) );
 }
 
 function error(err) {
