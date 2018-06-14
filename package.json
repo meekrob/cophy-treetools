@@ -1,6 +1,6 @@
 {
   "name": "cophy-treetools",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Node.js utilities for performing operations on newick trees.",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,9 @@
   "bin": {
     "leaves": "./bin/leaves.js",
     "longest_path": "./bin/longest_path.js",
-    "print_ascii_tree": "./bin/print_ascii_tree.js"
+    "print_ascii_tree": "./bin/print_ascii_tree.js",
+    "create_random_tree": "./bin/create_random_tree.js",
+    "detangle_tree": "./bin/detangle_tree.js"
   },
   "repository": {
     "type": "git",
