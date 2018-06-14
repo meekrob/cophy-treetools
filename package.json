@@ -10,10 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "fs": "0.0.1-security",
-    "newick": "^2.0.0"
+    "newick": "^2.0.0",
+    "seedrandom": "^2.4.3"
   },
   "bin": {
-    "leaves": "./bin/leaves.js"
+    "leaves": "./bin/leaves.js",
+    "longest_path": "./bin/longest_path.js",
+    "print_ascii_tree": "./bin/print_ascii_tree.js"
   },
   "repository": {
     "type": "git",

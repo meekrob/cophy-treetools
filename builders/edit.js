@@ -48,4 +48,5 @@
             node.branchset = [right, left];
         }
     };
+    module.exports = treetools;
 })();

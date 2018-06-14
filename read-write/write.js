@@ -31,6 +31,18 @@
     treetools.writeFile = function(filename, nw, error_f) {
         fs.writeFile(filename, treetools.toString(nw), 'utf-8', error_f);
     };
+    treetools.print_ascii = function(node, depth=0, scale = 1) { // depth is the length from node to root
+        var indent = ""; 
+        for (var i = 0; i < (scale * depth); i++) { indent += " "; }
+        var edge = ""; 
+        for (i = 0; i < (scale * node.length); i++) { edge += "-"; }
+        console.log(indent + "+" + edge + node.name + ":" + node.length);
+        if (node.branchset) {
+            for (i = 0; i < node.branchset.length; i++) {
+                treetools.print_ascii(node.branchset[i], depth+node.length, scale);
+            }   
+        }   
+    };
 
     module.exports = treetools;
 
