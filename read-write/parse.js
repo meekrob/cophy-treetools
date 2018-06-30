@@ -8,7 +8,11 @@
         return new Newick(newick_str).tree;
     }
 
-    treetools.parseFile = function(filename, success_f, error_f) {
+    treetools.parseFile = function(filename) {
+        return treetools.parse( String(fs.readFileSync(filename)) );
+    }
+
+    treetools.parseFileAsync = function(filename, success_f, error_f) {
         console.log(".parseFile: " + filename);
         fs.readFile(filename, 'utf8', function(err,data) {
             if (err) {

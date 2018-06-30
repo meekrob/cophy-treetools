@@ -10,11 +10,11 @@ if (process.argv.length < 4) {
 var filename1 = process.argv[2];
 var filename2 = process.argv[3];
 
-var nwf = treetools.parseFile(filename1, readFile2, error);
+var nwf = treetools.parseFileAsync(filename1, readFile2, error);
 
 function readFile2(nw1) {
 
-    treetools.parseFile(filename2, function(nw2) { main(nw1,nw2); }, error);
+    treetools.parseFileAsync(filename2, function(nw2) { main(nw1,nw2); }, error);
 
 }
 

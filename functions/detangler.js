@@ -5,21 +5,15 @@
     treetools.detangler = function(root, standard) {
         var data = {root: root, l1: standard}; // needed to call leaves, dfoot
         var detangle = function(node, depth, data) {
-            var indent = "";
-            for (var i = 0; i < depth; i++) { indent += "   "; }
             if (node.branchset) {
                 var dfoot_pre = treetools.dfoot(treetools.leaves(data.root), data.l1);
                 treetools.swap_children(node);
                 var dfoot_post = treetools.dfoot(treetools.leaves(data.root), data.l1);
-                console.log(indent + dfoot_pre + " vs " + dfoot_post);
                 if (dfoot_pre < dfoot_post) {
-                    console.log(indent + "reject swap");
                     treetools.swap_children(node);
                 }
                 else {
-                    console.log(indent + "keep swap");
                     writer.print_ascii(root);
-                    
                 }
             }
         };

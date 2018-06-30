@@ -1,5 +1,6 @@
 (function() { // shield global namespace
-    treetools = {}; // object to export
+    //treetools = {}; // object to export
+    treetools = require('../index');
     treetools.toString = function(nw) {
         
         // gather names, values recursively
@@ -31,7 +32,40 @@
     treetools.writeFile = function(filename, nw, error_f) {
         fs.writeFile(filename, treetools.toString(nw), 'utf-8', error_f);
     };
-    treetools.print_ascii = function(node, depth=0, scale = 1) { // depth is the length from node to root
+    
+    treetools.to_bullet_tree = function(tree) {
+        /* From ascii-tree: bullet string has to look like this:
+            #root node
+            ##node1
+            ###node11
+            ##node2
+        */
+        var d = {};
+        d.bullet_str = '';
+        var line_ending = "\r\n"; // from a windows developer?
+        treetools.visitPreOrder(
+            tree, 
+            function(node, depth, data) {
+                // function executed at each node to for bullet format
+                var indent='#';
+                for (var i=0; i < depth; i++) { indent += '#'; }
+                data.bullet_str += indent + node.name + line_ending; // was str_so_far passed by value or by reference?
+            },
+            0,
+            d
+        );
+        return d.bullet_str;
+    };
+    var asciitree = require('ascii-tree');
+    treetools.to_ascii = function(newick) { // currently unscaled
+        var bullet = treetools.to_bullet_tree(newick);
+        var ascii = asciitree.generate(bullet);
+        return ascii;
+    };
+    treetools.print_ascii = function(tree) {
+        console.log( treetools.to_ascii(tree) );
+    }
+    treetools.print_ascii_old = function(node, depth=0, scale = 1) { // depth is the length from node to root
         var indent = ""; 
         for (var i = 0; i < (scale * depth); i++) { indent += " "; }
         var edge = ""; 

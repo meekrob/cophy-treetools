@@ -9,6 +9,7 @@
   "author": "David C King <davidcking.inbox@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "ascii-tree": "^0.3.0",
     "fs": "0.0.1-security",
     "newick": "^2.0.0",
     "seedrandom": "^2.4.3"
