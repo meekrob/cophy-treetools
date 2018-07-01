@@ -1,5 +1,4 @@
 (function() { // shield global namespace
-    //treetools = {}; // object to export
     treetools = require('../index');
     treetools.toString = function(nw) {
         
@@ -64,6 +63,9 @@
     };
     treetools.print_ascii = function(tree) {
         console.log( treetools.to_ascii(tree) );
+    }
+    treetools.print_ascii_error = function(tree) {
+        console.error( treetools.to_ascii(tree) );
     }
     treetools.print_ascii_old = function(node, depth=0, scale = 1) { // depth is the length from node to root
         var indent = ""; 

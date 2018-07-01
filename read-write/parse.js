@@ -4,7 +4,6 @@
 
     treetools = {}; // object to export
     treetools.parse = function(newick_str) {
-        console.log(".parse: " + newick_str);
         return new Newick(newick_str).tree;
     }
 
@@ -13,7 +12,6 @@
     }
 
     treetools.parseFileAsync = function(filename, success_f, error_f) {
-        console.log(".parseFile: " + filename);
         fs.readFile(filename, 'utf8', function(err,data) {
             if (err) {
                 console.error("parseFile: unable to read file '" + filename + "'. Error: " + err);

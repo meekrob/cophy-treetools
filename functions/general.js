@@ -15,8 +15,6 @@
                 }
             }
             // max of all children
-            console.log(max_i);
-            console.log(values);
             running_str = values[max_i][0];
             running_length = values[max_i][1];
         }

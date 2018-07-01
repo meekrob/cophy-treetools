@@ -10,10 +10,11 @@
                 treetools.swap_children(node);
                 var dfoot_post = treetools.dfoot(treetools.leaves(data.root), data.l1);
                 if (dfoot_pre < dfoot_post) {
-                    treetools.swap_children(node);
+                    treetools.swap_children(node); // swaps it back
+                    console.error("No swap needed for children of %s", node.name);
                 }
                 else {
-                    writer.print_ascii(root);
+                    console.error("Swapping children of %s", node.name); // retain swap
                 }
             }
         };
