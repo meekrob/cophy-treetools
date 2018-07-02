@@ -20,7 +20,9 @@
     "longest_path": "./bin/longest_path.js",
     "print_ascii_tree": "./bin/print_ascii_tree.js",
     "create_random_tree": "./bin/create_random_tree.js",
-    "detangle_tree": "./bin/detangle_tree.js"
+    "detangle_tree": "./bin/detangle_tree.js",
+    "make_binary": "./bin/make_binary.js",
+    "cladogram": "./bin/cladogram.js"
   },
   "repository": {
     "type": "git",
