@@ -8,6 +8,27 @@
     treetools.create_leaf = function(arg_name, arg_length) {
         return { name: arg_name, length: arg_length };
     };
+    treetools.index_and_enumerate = function(tree, id_prefix, fieldname="unique_id", traversal_fnx=treetools.visitPreOrder) {
+        // id_prefix  is something like "node_"
+        // this function extends the tree object to include fieldname, 
+        // and returns an object of references keyed off of that name
+        var counter = 0; // increase as we visit nodes in the tree
+        var nodeLookup = {}; // maintain a reference to the nodes based on template string + counter 
+        var data = { counter, nodeLookup };
+        traversal_fnx(tree,
+            // to be executed in a depth-first manner
+            function(node, depth, data) {
+                if (! node.hasOwnProperty(fieldname)) {
+                    tag = id_prefix + data.counter++;
+                    data.nodeLookup[tag] = node;
+                    node[fieldname] = tag;    
+                }
+            },
+            0, // starting depth is zero
+            data
+        );
+        return data.nodeLookup
+    };
     treetools.make_binary = function(node) {
         if (node.branchset) {
             var n = node.branchset.length;
