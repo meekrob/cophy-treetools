@@ -29,6 +29,7 @@
         };
         var data = {};
         traversal.visitPreOrder(tree, add_name_if_leaf, 0, data);
+        if (data.leaves.length == 0) throw new Error("leaf_names has empty result");
         return data.leaves;
     };
     treetools.leaves = function(tree) {

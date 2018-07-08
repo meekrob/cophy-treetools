@@ -16,7 +16,7 @@
         var nodeLookup = {}; // maintain a reference to the nodes based on template string + counter 
         var data = { counter, nodeLookup };
         traversal_fnx(tree,
-            // to be executed in a depth-first manner
+
             function(node, depth, data) {
                 if (! node.hasOwnProperty(fieldname)) {
                     tag = id_prefix + data.counter++;
