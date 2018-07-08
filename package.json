@@ -1,6 +1,6 @@
 {
   "name": "cophy-treetools",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Node.js utilities for performing operations on newick trees.",
   "main": "index.js",
   "scripts": {

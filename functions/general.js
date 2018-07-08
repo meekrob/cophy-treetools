@@ -20,11 +20,22 @@
         }
         return [running_str,running_length];
     };
-    treetools.leaves = function(tree) {
+    treetools.leaf_names = function(tree) {
         var add_name_if_leaf = function(node, depth, data) {
             if (! node.branchset) {
                 if (! data.leaves) { data.leaves = []; }
                 data.leaves.push(node.name);
+            }
+        };
+        var data = {};
+        traversal.visitPreOrder(tree, add_name_if_leaf, 0, data);
+        return data.leaves;
+    };
+    treetools.leaves = function(tree) {
+        var add_name_if_leaf = function(node, depth, data) {
+            if (! node.branchset) {
+                if (! data.leaves) { data.leaves = []; }
+                data.leaves.push(node);
             }
         };
         var data = {};
