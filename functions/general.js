@@ -21,6 +21,7 @@
         return [running_str,running_length];
     };
     treetools.leaf_names = function(tree) {
+        throw new Error("treetools.leaf_names");
         var add_name_if_leaf = function(node, depth, data) {
             if (! node.branchset) {
                 if (! data.leaves) { data.leaves = []; }

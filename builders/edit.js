@@ -20,9 +20,9 @@
             function(node, depth, data) {
                 if (! node.hasOwnProperty(fieldname)) {
                     tag = id_prefix + data.counter++;
-                    data.nodeLookup[tag] = node;
                     node[fieldname] = tag;    
                 }
+                data.nodeLookup[tag] = node;
             },
             0, // starting depth is zero
             data
