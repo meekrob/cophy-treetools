@@ -22,7 +22,7 @@
                     tag = id_prefix + data.counter++;
                     node[fieldname] = tag;    
                 }
-                data.nodeLookup[tag] = node;
+                data.nodeLookup[ node[fieldname] ] = node;
             },
             0, // starting depth is zero
             data
