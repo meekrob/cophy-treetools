@@ -48,7 +48,8 @@
                 // function executed at each node to for bullet format
                 var indent='#';
                 for (var i=0; i < depth; i++) { indent += '#'; }
-                data.bullet_str += indent + node.name + line_ending; // was str_so_far passed by value or by reference?
+                var node_str = node.name ? node.name : "anon";
+                data.bullet_str += indent + node_str + line_ending; // was str_so_far passed by value or by reference?
             },
             0,
             d
@@ -61,6 +62,9 @@
         var ascii = asciitree.generate(bullet);
         return ascii;
     };
+    treetools.print_bullet = function(tree) {
+        console.log( treetools.to_bullet_tree(tree) );
+    }
     treetools.print_ascii = function(tree) {
         console.log( treetools.to_ascii(tree) );
     }
