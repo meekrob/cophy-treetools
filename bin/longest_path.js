@@ -8,7 +8,7 @@ if (process.argv.length < 3) {
 }
 
 var filename = process.argv[2];
-var nwf = treetools.parseFile(filename, main, error);
+var nwf = treetools.parseFileAsync(filename, main, error);
 
 function main(nw) {
     console.dir(nw);
