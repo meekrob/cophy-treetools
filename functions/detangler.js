@@ -16,11 +16,11 @@
                 var dfoot_post = treetools.dfoot(treetools.leaf_names(data.root), data.l1);
                 if (dfoot_pre < dfoot_post) {
                     treetools.swap_children(node); // swaps it back
-                    console.error("No swap needed for children of %s", node.name);
+                    //console.error("No swap needed for children of %s", node.name);
                 }
-                else {
+                /*else {
                     console.error("Swapping children of %s", node.name); // retain swap
-                }
+                }*/
             }
         };
 
