@@ -8,11 +8,14 @@ if (process.argv.length < 3) {
 }
 
 var filename = process.argv[2];
-var nwf = treetools.parseFile(filename, main, error);
+console.log(filename);
+var nwf = treetools.parseFile(filename);
+main(nwf);
 
 function main(nw) {
-    console.dir(nw);
-    var leaves = treetools.leaves(nw);
+    console.log('main');
+    //console.log(nw);
+    var leaves = treetools.leaf_names(nw);
     console.log(leaves);
 }
 

@@ -26,13 +26,20 @@
 
         builders.visitPostOrder(root, detangle, 0, data);
     };
+    treetools.run_detangler = function(nw1, nw2) {
+        treetools.detangler(nw1, treetools.leaf_names(nw2));
+    };
+    treetools.run_dfoot = function(nw1, nw2) {
+        return treetools.dfoot(treetools.leaf_names(nw1), treetools.leaf_names(nw2));
+    };
     treetools.dfoot = function(nodelist, standard) {
         // Implementation of Spearman's footrule distance
         // Defined as the sum of the distance of ranks of the respective lists of leaves (names).
         // No ranking system is predefined, so use the order of the left leaves as the ranks.
         var sum = 0;
         for (var i = 0; i < nodelist.length; i++) {
-            sum += Math.abs(i - nodelist.indexOf( standard[i] ));
+            var other_index = nodelist.indexOf( standard[i] );
+            sum += Math.abs(i - other_index);
         }
         return sum;
     };

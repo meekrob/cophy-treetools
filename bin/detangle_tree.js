@@ -49,17 +49,20 @@ function readFile2(nw1) {
 }
 
 function main(nw1, nw2) {
-    console.error("Tree 1 --------------------------------");
-    treetools.print_ascii_error(nw1);
-    console.error("Tree 2 --------------------------------");
-    treetools.print_ascii_error(nw2);
+    console.log("PRE dfoot:" + treetools.run_dfoot(nw1, nw2));
+    treetools.make_binary(nw1);
+    treetools.make_binary(nw2);
+    //console.error("Tree 1 --------------------------------");
+    //treetools.print_ascii_error(nw1);
+    //console.error("Tree 2 --------------------------------");
+    //treetools.print_ascii_error(nw2);
     console.error("-------- Commence detangling of Tree 1 ----------");
-    var leaves = treetools.leaves(nw2);
-    treetools.detangler( nw1, leaves )
+    treetools.run_detangler( nw1, nw2 )
     console.error("Detangled Tree 1 --------------------------------");
     treetools.print_ascii_error(nw1);
 
     console.log( treetools.toString(nw1) );
+    console.log("POST dfoot:" + treetools.run_dfoot(nw1, nw2));
 }
 
 function error(err) {
