@@ -13,7 +13,8 @@
     "commander": "^2.16.0",
     "fs": "0.0.1-security",
     "newick": "^2.0.0",
-    "seedrandom": "^2.4.3"
+    "seedrandom": "^2.4.3",
+    "string-similarity": "^1.2.0"
   },
   "bin": {
     "leaves": "./bin/leaves.js",
