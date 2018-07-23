@@ -33,7 +33,7 @@
     treetools.run_dfoot = function(nw1, nw2, exact=false) {
         return treetools.dfoot(treetools.leaf_names(nw1), treetools.leaf_names(nw2), exact);
     };
-    treetools.dfoot = function(nodelist, standard, exact=true) {
+    treetools.dfoot = function(nodelist, standard, exact=false) {
         // Implementation of Spearman's footrule distance
         // Defined as the sum of the distance of ranks of the respective lists of leaves (names).
         // No ranking system is predefined, so use the order of the left leaves as the ranks.
@@ -53,7 +53,7 @@
         }
         return sum;
     };
-    treetools.local_dfoot = function(nodelist, standard, exact=true) {
+    treetools.local_dfoot = function(nodelist, standard, exact=false) {
         var sum = 0;
         var obj = {};
         var min = Number.MAX_SAFE_INTEGER;
