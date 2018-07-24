@@ -40,15 +40,18 @@
         var sum = 0;
         if (exact) {
             for (var i = 0; i < nodelist.length; i++) {
-                var other_index = nodelist.indexOf( standard[i] );
+                var other_index = standard.indexOf( nodelist[i] ); // should throw an error here if -1
                 sum += Math.abs(i - other_index);
             }
         }
         else {
             for (var i = 0; i < nodelist.length; i++) {
                 leftNodeName = nodelist[i];
+                // find the closest (Hamming) string in standard that matches leftNodeName.
+                // the outcome is an item of the array, and therefore will have a valid index
                 bestMatch = stringSimilarity.findBestMatch(leftNodeName, standard).bestMatch.target;
-                sum += Math.abs(i - nodelist.indexOf( bestMatch ));
+                var diff = Math.abs(i - standard.indexOf( bestMatch ));
+                sum += Math.abs(i - standard.indexOf( bestMatch ));
             }
         }
         return sum;
@@ -61,12 +64,14 @@
         for (var i = 0; i < nodelist.length; i++) {
             var dif = 0;
             if (exact) {
-                dif = Math.abs(i - nodelist.indexOf( standard[i] ));
+                dif = Math.abs(i - standard.indexOf( nodelist[i] )); // should throw an error here if -1?
             }
             else {
                 leftNodeName = nodelist[i];
+                // find the closest (Hamming) string in standard that matches leftNodeName.
+                // the outcome is an item of the array, and therefore will have a valid index
                 bestMatch = stringSimilarity.findBestMatch(leftNodeName, standard).bestMatch.target;
-                dif = Math.abs(i - nodelist.indexOf( bestMatch ));
+                dif = Math.abs(i - standard.indexOf( bestMatch ));
             }
             sum += dif;
             min = Math.min(min,dif);
