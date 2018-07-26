@@ -56,6 +56,14 @@
         }
         return sum;
     };
+    treetools.run_local_dfoot = function(nw1, nw2, exact=false) {
+        l1 = treetools.leaf_names(nw1);
+        l2 = treetools.leaf_names(nw2);
+        for (var i = 0; i < l1.length; i++) {
+            console.log("%d %s %s", i, l1[i], l2[i]);
+        }
+        return treetools.local_dfoot(treetools.leaf_names(nw1), treetools.leaf_names(nw2));
+    }
     treetools.local_dfoot = function(nodelist, standard, exact=false) {
         var sum = 0;
         var obj = {};
@@ -71,12 +79,14 @@
                 // find the closest (Hamming) string in standard that matches leftNodeName.
                 // the outcome is an item of the array, and therefore will have a valid index
                 bestMatch = stringSimilarity.findBestMatch(leftNodeName, standard).bestMatch.target;
-                dif = Math.abs(i - standard.indexOf( bestMatch ));
+
+                i_in_std = standard.indexOf( bestMatch );
+                dif = Math.abs(i - i_in_std);
             }
             sum += dif;
             min = Math.min(min,dif);
             max = Math.max(max,dif);
-            obj[ standard[i] ] = dif;
+            obj[ nodelist[i] ] = dif;
         }
         return { sum: sum, diffs: obj, min: min, max: max };
     }
