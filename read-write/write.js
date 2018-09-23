@@ -1,11 +1,19 @@
 (function() { // shield global namespace
     treetools = require('../index');
-    treetools.toString = function(nw) {
+    treetools.toString = function(nw, round) {
         
         // gather names, values recursively
         var compileNW = function(node, stack)
         {   
-            stack.unshift(node.name + ":" + node.length);
+            if (node.length === undefined) {
+                stack.unshift(node.name + ":0");
+            }
+            else if (! isNaN(round) ) {
+                stack.unshift(node.name + ":" + node.length.toFixed(round));
+            }
+            else {
+                stack.unshift(node.name + ":" + node.length);
+            }
     
             if (node.branchset)
             {   
