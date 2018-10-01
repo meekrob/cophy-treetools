@@ -67,11 +67,13 @@ function main(nw1, nw2) {
 
         // best match method: find the closest matching string in standard, take the index of that match
         var bestMatch = stringSimilarity.findBestMatch(node_i, standard).bestMatch.target;
+        var prev_j = j;
         j = standard.indexOf(bestMatch);
         node_j = standard[j];
         outstr += j + "\t" + node_j + "\t";
-
-        console.log(outstr);
+        if (prev_j != j) {
+            console.log(outstr);
+        }
     }
 }
 
