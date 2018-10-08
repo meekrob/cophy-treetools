@@ -6,6 +6,7 @@
     treetools = {};
     treetools = extend(treetools, require('./detangler'));
     treetools = extend(treetools, require('./general'));
+    treetools = extend(treetools, require('./validation'));
     module.exports = treetools;
 })();
 
