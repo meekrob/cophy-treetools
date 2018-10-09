@@ -7,12 +7,22 @@
         return v;
     }
 
+    function cmp(a,b) {
+        if (a == b) return 0;
+        return a < b ? -1 : 1;
+    }
+
     function isInt(v) {
         return Math.trunc(v) == v;
     }
     treetools = {};
 
-    treetools.get_json_mismatches = function(nodelist, standard)   {
+    treetools.get_json_mismatches = function(left, right)   {
+        var left_to_right = treetools.compare_leaf_lists(left,right);
+        var right_to_left = treetools.compare_leaf_lists(right, left);
+        return { LTR: left_to_right, RTL: right_to_left };
+    }
+    treetools.compare_leaf_lists = function(nodelist, standard)   {
 
 
         var json_mismatches = [];
@@ -25,7 +35,7 @@
             json_report.left_nodename = node_i;
             json_report.left_nodeindex = i;
 
-            // exact method:  standard.indexOf
+            // exact matches:  standard.indexOf
             var j = standard.indexOf(node_i);
             json_report.right_index_for_left = j;
 
@@ -44,15 +54,18 @@
             // best match method: find the closest matching string in standard, take the index of that match
             // not necessary for exact matches
             var bestMatchObj = treetools.findBestMatch(node_i, standard); 
-            var bestMatch = bestMatchObj.bestMatch;//.target;
+            //var bestMatch = bestMatchObj.bestMatch;//.target;
 
-            json_report.best_match_in_right_for_left = bestMatch;
 
             var ratings = bestMatchObj.ratings;
             ratings.sort(function(a,b) {
-                if (a.rating == b.rating) return 0;
-                return a.rating < b.rating ? -1 : 1; // I want reverse
+                if (a.rating == b.rating) {
+                    return cmp(a.target,b.target);
+                }
+                return a.rating < b.rating ? -1 : 1; // Distance, low-to-high
             });
+            var bestMatch = { target: ratings[0].target, rating: ratings[0].rating };
+            json_report.best_match_in_right_for_left = bestMatch;
             
             var prev_j = j; // -1 if no exact match
             j = standard.indexOf(bestMatch.target);
