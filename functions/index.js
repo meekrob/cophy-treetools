@@ -7,6 +7,7 @@
     treetools = extend(treetools, require('./detangler'));
     treetools = extend(treetools, require('./general'));
     treetools = extend(treetools, require('./validation'));
+    treetools = extend(treetools, require('./string-similarity'));
     module.exports = treetools;
 })();
 
