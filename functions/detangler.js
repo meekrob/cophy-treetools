@@ -59,9 +59,6 @@
     treetools.run_local_dfoot = function(nw1, nw2, exact=false) {
         l1 = treetools.leaf_names(nw1);
         l2 = treetools.leaf_names(nw2);
-        for (var i = 0; i < l1.length; i++) {
-            console.log("%d %s %s", i, l1[i], l2[i]);
-        }
         return treetools.local_dfoot(treetools.leaf_names(nw1), treetools.leaf_names(nw2));
     }
     treetools.local_dfoot = function(nodelist, standard, exact=false) {
