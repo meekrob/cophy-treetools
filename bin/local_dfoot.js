@@ -40,3 +40,12 @@ var nw1 = treetools.parseFile(filename1);
 var nw2 = treetools.parseFile(filename2);
 
 var df = treetools.run_local_dfoot(nw1, nw2);
+
+console.log("dfoot" + "\t" + "nodename");
+plain_vec = [];
+for (nodename in df.diffs)  {
+    var dfoot = df.diffs[nodename];
+    console.log(dfoot + "\t" + nodename);
+    plain_vec.push(dfoot);
+}
+console.log(JSON.stringify(plain_vec));
