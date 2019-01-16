@@ -21,7 +21,7 @@ var filename1;
 var filename2;
 
 program
-    .arguments('local dfoot <newick1> <newick2>')
+    .arguments('local_dfoot <newick1> <newick2>')
     .description(DESCRIPTION)
     .usage('<newick1> <newick2>')
     .action(function(newick1, newick2) {
