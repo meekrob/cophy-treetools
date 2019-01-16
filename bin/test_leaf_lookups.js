@@ -13,29 +13,7 @@ var treetools = require('../index');
 var program = require('commander');
 var fs = require('fs');
 
-var stringSimilarity;
-var USE_LEVENSHTEIN = true;
-
-if (USE_LEVENSHTEIN) {
-    fl = require('fast-levenshtein');
-    stringSimilarity = function() {};
-}
-else {
-    stringSimilarity = require("string-similarity");
-}
-
-// use this to order the output
-stringSimilarity.cmp = function(a,b) {
-    if (a.rating == b.rating) {
-        return cmp(a.target, b.target);
-    }
-    if (USE_LEVENSHTEIN) {
-        return cmp(a.rating,b.rating); // for Levenshtein
-    }
-    //else 
-    return -1 * cmp(a.rating,b.rating); // for Dice coeffecient
-    
-}
+var stringSimilarity = require('treeTools.string-similarity');
 if (USE_LEVENSHTEIN) {
     stringSimilarity.findBestMatch = function(target, array_of_strings) {
         var best = { target: "NA", rating: Number.MAX_SAFE_INTEGER };

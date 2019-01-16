@@ -14,7 +14,7 @@ Abstracting the module string-similarity with other comparison functions, such a
             var best = { target: "NA", rating: Number.MAX_SAFE_INTEGER };
             ratings = [];
             for (var i in array_of_strings) {
-                var distance = fl.get(target, array_of_strings[i]);
+                var distance = fastLevenshtein.get(target, array_of_strings[i]);
                 outcome = { target: array_of_strings[i], rating: distance };
                 ratings.push( outcome );
                 if ( cmp(outcome, best) < 0 ) {
