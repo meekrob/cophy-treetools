@@ -13,7 +13,7 @@ var treetools = require('../index');
 var program = require('commander');
 var fs = require('fs');
 
-treetools.findBestMatch = function(target, array_of_strings) {
+/*treetools.findBestMatch = function(target, array_of_strings) {
     var best = { target: "NA", rating: Number.MAX_SAFE_INTEGER };
     ratings = [];
     for (var i in array_of_strings) {
@@ -28,7 +28,7 @@ treetools.findBestMatch = function(target, array_of_strings) {
         ratings: ratings,
         bestMatch: best
     };
-}
+}*/
 
 
 /**
