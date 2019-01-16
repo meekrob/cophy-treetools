@@ -13,24 +13,21 @@ var treetools = require('../index');
 var program = require('commander');
 var fs = require('fs');
 
-var stringSimilarity = require('treeTools.string-similarity');
-if (USE_LEVENSHTEIN) {
-    stringSimilarity.findBestMatch = function(target, array_of_strings) {
-        var best = { target: "NA", rating: Number.MAX_SAFE_INTEGER };
-        ratings = [];
-        for (var i in array_of_strings) {
-            var distance = fl.get(target, array_of_strings[i]);
-            outcome = { target: array_of_strings[i], rating: distance };
-            ratings.push( outcome );
-            if ( stringSimilarity.cmp(outcome, best) < 0 ) {
-                best = outcome;
-            }
+treetools.findBestMatch = function(target, array_of_strings) {
+    var best = { target: "NA", rating: Number.MAX_SAFE_INTEGER };
+    ratings = [];
+    for (var i in array_of_strings) {
+        var distance = fl.get(target, array_of_strings[i]);
+        outcome = { target: array_of_strings[i], rating: distance };
+        ratings.push( outcome );
+        if ( stringSimilarity.cmp(outcome, best) < 0 ) {
+            best = outcome;
         }
-        return {
-            ratings: ratings,
-            bestMatch: best
-        };
     }
+    return {
+        ratings: ratings,
+        bestMatch: best
+    };
 }
 
 
