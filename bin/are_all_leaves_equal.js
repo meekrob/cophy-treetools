@@ -6,7 +6,7 @@ function DataException(message) {
     this.name = "DataException";
 }
 function GetLookupFromDSV(filetext, delim="\t") {
-    lookup = Object();
+    lookup=d3.map();
     left_names = new Set();
     right_names = new Set();
 
@@ -27,7 +27,7 @@ function GetLookupFromDSV(filetext, delim="\t") {
 
             left_names.add(left_name);
             right_names.add(right_name);
-            lookup[left_name] = right_name;
+            lookup.set(left_name,right_name);
         }
     });
     return lookup;
@@ -46,6 +46,7 @@ var DESCRIPTION =
 var treetools = require('../index');
 var program = require('commander');
 var fs = require('fs');
+var d3 = require('d3');
 /**
 *
 * Command line
@@ -77,7 +78,7 @@ var nw2 = treetools.parseFile(filename2);
 var leaf1 = treetools.leaf_names(nw1).sort();
 var leaf2 = treetools.leaf_names(nw2).sort();
 
-map = {};
+map = d3.map();
 if ((mapfilename !== undefined)) {
     maptext = String(fs.readFileSync(mapfilename));
     map = GetLookupFromDSV(maptext);
@@ -117,11 +118,10 @@ if (leaf1.length != leaf2.length) {
 }
 
 // apply leaf lookup map
-var mapnames = Object.getOwnPropertyNames(map);
-if (mapnames.length > 0) {
+if (map.size() > 0) {
     var translated_leafnames = [];
     for (var leaf of leaf1) {
-        if (leaf in map) {
+        if (map.has(leaf)) {
             translated_leafnames.push(leaf);
         }
         else {

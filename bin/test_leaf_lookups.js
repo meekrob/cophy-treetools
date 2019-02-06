@@ -12,6 +12,7 @@ Test methods for looking up leaf names in one tree versus the other.
 var treetools = require('../index');
 var program = require('commander');
 var fs = require('fs');
+var d3 = require('d3');
 const assert = require('assert');
 
 /*treetools.findBestMatch = function(target, array_of_strings) {
@@ -48,7 +49,7 @@ program
         console.error('Comparing %s and %s [using %s map]', newick1, newick2,map);
         filename1 = newick1;
         filename2 = newick2;
-        filename3 = map;
+        mapfilename = map;
     });
 
 program.parse(process.argv);
@@ -56,7 +57,18 @@ if ((filename1 === undefined) || (filename2 === undefined)) {
     program.help();
     process.exit(1);
 }
-
+var map = d3.map();
+if (mapfilename !== undefined) {
+    maptext = String(fs.readFileSync(mapfilename));
+    maptext.split('\n').forEach(function(line) {
+        if (line) { 
+            fields = line.split("\t");
+            left_name = fields[0];
+            right_name = fields[1];
+            map.set(left_name, right_name);
+        }
+    }); 
+}
 
 var nwf = treetools.parseFileAsync(filename1, readFile2, error);
 
