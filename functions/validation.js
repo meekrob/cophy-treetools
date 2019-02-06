@@ -91,6 +91,10 @@
         return { mismatch_reports: json_mismatches, nmismatches: json_mismatches.length };
 
     }
+    treetools.checkCongruency = function(leftNW, rightNW, map=null) {
+    ///////////////// stub ///////////////// 
+        return;
+    }
     module.exports = treetools;
 })();
 
