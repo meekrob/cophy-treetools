@@ -12,6 +12,7 @@ Test methods for looking up leaf names in one tree versus the other.
 var treetools = require('../index');
 var program = require('commander');
 var fs = require('fs');
+const assert = require('assert');
 
 /*treetools.findBestMatch = function(target, array_of_strings) {
     var best = { target: "NA", rating: Number.MAX_SAFE_INTEGER };
@@ -40,13 +41,14 @@ var filename1;
 var filename2;
 
 program
-    .arguments('test_leaf_lookups <newick1> <newick2>')
+    .arguments('test_leaf_lookups <newick1> <newick2> [map]')
     .description(DESCRIPTION)
-    .usage('<newick1> <newick2>')
-    .action(function(newick1, newick2) {
-        console.error('Comparing %s and %s', newick1, newick2);
+    .usage('<newick1> <newick2> [map]')
+    .action(function(newick1, newick2, map) {
+        console.error('Comparing %s and %s [using %s map]', newick1, newick2,map);
         filename1 = newick1;
         filename2 = newick2;
+        filename3 = map;
     });
 
 program.parse(process.argv);
@@ -68,6 +70,12 @@ function main(nw1, nw2) {
     var node_i,node_j;
     var nodelist = treetools.leaf_names(nw1);
     var standard = treetools.leaf_names(nw2);
+    try {
+        assert.equal(nodelist.length,standard.length);
+    }
+    catch(err) {
+        console.log('trees are not equal length');
+    }
     var json_mismatches = treetools.get_json_mismatches(nodelist, standard);
     console.log(JSON.stringify(json_mismatches, null, 2));
 }
