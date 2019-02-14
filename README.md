@@ -9,7 +9,7 @@ node: {
   branchlength: number, // decimal
   children: [], // recursive links to child 'node's
 // amended by cophy-treetools
-  node_id: '', // a unique identifier assigned inside of (reference)
+  node_id: '', // a unique identifier assigned inside of (index_and_enumerate)
   
 };
 ```
