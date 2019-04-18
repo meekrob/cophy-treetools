@@ -10,13 +10,14 @@
   "license": "ISC",
   "dependencies": {
     "ascii-tree": "^0.3.0",
-    "commander": "^2.16.0",
-    "d3": "^5.8.0",
+    "commander": "^2.20.0",
+    "d3": "^5.9.2",
     "fast-levenshtein": "^2.0.6",
     "fs": "0.0.1-security",
+    "lodash": ">=4.17.11",
     "newick": "^2.0.0",
-    "seedrandom": "^2.4.3",
-    "string-similarity": "^1.2.0"
+    "seedrandom": "^2.4.4",
+    "string-similarity": "^1.2.2"
   },
   "bin": {
     "leaves": "./bin/leaves.js",
